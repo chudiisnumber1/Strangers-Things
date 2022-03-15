@@ -1,7 +1,17 @@
 export const fetchPosts = async () => {
-  const response = await fetch(
-    "https://strangers-things.herokuapp.com/api/2202-FTB-ET-WEB-FT/posts"
-  );
-  const data = response.json();
-  return data;
+  try {
+    const response = await fetch(
+      "https://strangers-things.herokuapp.com/api/2202-FTB-ET-WEB-FT/posts"
+    );
+    const result = await response.json();
+    const data = await result.data.posts;
+    return data;
+  } catch (error) {
+    throw error;
+  }
 };
+//   return data;
+
+// export const function fetchProfile = async () => {
+//     const
+// }

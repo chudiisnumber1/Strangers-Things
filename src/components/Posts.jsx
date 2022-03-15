@@ -1,7 +1,5 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { fetchPosts } from "../api/index.js";
-import { useEffect, UseState } from "react";
-import { useState } from "react/cjs/react.production.min";
 
 const Posts = () => {
   const [posts, setPosts] = useState([]);
@@ -9,17 +7,11 @@ const Posts = () => {
   useEffect(() => {
     const getPosts = async () => {
       const result = await fetchPosts();
-      const newPosts = result.data.posts;
-      setPosts(newPosts);
+      console.log(result, "this is from useEffect in posts");
+      setPosts(result);
     };
     getPosts();
   }, []);
-  return (
-    <div>
-      {posts.map((post, i) => {
-        return;
-      })}
-    </div>
-  );
+  return <div></div>;
 };
 export default Posts;
