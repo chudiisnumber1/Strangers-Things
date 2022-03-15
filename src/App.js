@@ -1,16 +1,25 @@
-import React from 'react';
+import React from "react";
+import { Switch, Route } from "react-router-dom";
+import Nav from "./components/Nav";
+import Home from "./components/Home";
+import Posts from "./components/Posts";
+import Profile from "./components/Profile";
 
 function App() {
   return (
-    <div style={{ textAlign: 'center' }}>
-      <header>
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a href="https://reactjs.org" target="_blank" rel="noopener noreferrer">
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Nav />
+      <Switch>
+        <Route path="/home">
+          <Home />
+        </Route>
+        <Route path="/posts">
+          <Posts />
+        </Route>
+        <Route path="/profile">
+          <Profile />
+        </Route>
+      </Switch>
     </div>
   );
 }
