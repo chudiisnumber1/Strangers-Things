@@ -4,7 +4,8 @@ export const fetchPosts = async () => {
       "https://strangers-things.herokuapp.com/api/2202-FTB-ET-WEB-FT/posts"
     );
     const result = await response.json();
-    const data = await result.data.posts;
+    const data = result.data.posts;
+    console.log(data)
     return data;
   } catch (error) {
     throw error;

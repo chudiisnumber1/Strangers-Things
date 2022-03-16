@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { fetchPosts } from "../api/index.js";
 
+
+
+
 const Posts = () => {
     const [posts, setPosts] = useState([]);
 
@@ -12,8 +15,19 @@ const Posts = () => {
         };
         getPosts();
     }, []);
-    return <div>
+    console.log(posts)
+    return (
+        <div>
+            {posts.map((post, i) => {
+                return (
+                    <div>
+                        <h1>{post.title}</h1>
+                    </div>
+                )
+            })
+            }
+        </div>
+    )
 
-    </div>;
 };
 export default Posts;
