@@ -12,17 +12,16 @@ export const fetchPosts = async () => {
   }
 };
 
-// fetch("https://strangers-things.herokuapp.com/api/2202-FTB-ET-WEB-FT/posts", {
-//   method: "POST",
-//   headers: {
-//     "Content-Type": "application/json",
-//     Authorization: "Bearer TOKEN_STRING_HERE",
-//   },
-//   body: JSON.stringify({
-//     user: {
-//       username:
-//       password:
-//     }
-//   }),
-// }
-// );
+fetch("https://strangers-things.herokuapp.com/api/2202-FTB-ET-WEB-FT/posts", {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json",
+    Authorization: "Bearer TOKEN_STRING_HERE",
+  },
+  body: JSON.stringify({
+    user: {
+      username,
+      password,
+    },
+  }),
+});

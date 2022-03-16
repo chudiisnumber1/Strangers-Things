@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
 
-const Signup = () => {
+const Signup = async () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
@@ -10,7 +10,6 @@ const Signup = () => {
       <form
         onSubmit={(e) => {
           e.preventDefault();
-          console.log(username, password);
         }}
       >
         <input
