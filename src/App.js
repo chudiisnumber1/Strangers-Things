@@ -5,6 +5,8 @@ import Home from "./components/Home";
 import Posts from "./components/Posts";
 import Profile from "./components/Profile";
 import Login from "./components/Login";
+import Signup from "./components/Signup";
+import { Link } from "react-router-dom";
 
 function App() {
   return (
@@ -14,14 +16,17 @@ function App() {
         <Route path="/Login">
           <Login />
         </Route>
-        <Route path="/home">
+        <Route path="/Home">
           <Home />
         </Route>
-        <Route path="/posts">
+        <Route path="/Posts">
           <Posts />
         </Route>
-        <Route path="/profile">
+        <Route path="/Profile">
           <Profile />
+        </Route>
+        <Route path="/Signup">
+          <Signup />
         </Route>
       </Switch>
     </div>

@@ -3,18 +3,13 @@ import { Link } from "react-router-dom";
 
 const Nav = () => {
   return (
-    (
-      <div>
-        <Link to="/home">Home</Link>
-        <Link to="/posts">Posts</Link>
-        <Link to="/profile">Profile</Link>
-      </div>
-    ),
-    (
-      <div>
-        <Link to="/Login">Login</Link>
-      </div>
-    )
+    <div>
+      <Link to="/Home">Home</Link>
+      <Link to="/Posts">Posts</Link>
+      <Link to="/Profile">Profile</Link>
+      <Link to="/Login">Login</Link>
+      <Link to="/Signup">Signup</Link>
+    </div>
   );
 };
 
