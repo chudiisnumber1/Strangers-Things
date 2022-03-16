@@ -5,14 +5,24 @@ export const fetchPosts = async () => {
     );
     const result = await response.json();
     const data = result.data.posts;
-    console.log(data)
+    console.log(data);
     return data;
   } catch (error) {
     throw error;
   }
 };
-//   return data;
 
-// export const function fetchProfile = async () => {
-//     const
+// fetch("https://strangers-things.herokuapp.com/api/2202-FTB-ET-WEB-FT/posts", {
+//   method: "POST",
+//   headers: {
+//     "Content-Type": "application/json",
+//     Authorization: "Bearer TOKEN_STRING_HERE",
+//   },
+//   body: JSON.stringify({
+//     user: {
+//       username:
+//       password:
+//     }
+//   }),
 // }
+// );
