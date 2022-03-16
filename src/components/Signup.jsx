@@ -1,15 +1,29 @@
 import React from "react";
 import { useState } from "react";
+import { userSignUP } from "../api";
 
-const Signup = async () => {
+const Signup = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
+  async function fetchUserSignup() {
+    try {
+      const token = await userSignUP(username, password);
+      localStorage.setItem("token", token);
+      {
+        /*setItem, getItem, clearItem*/
+      }
+      console.log(token);
+    } catch (error) {
+      console.log(error);
+    }
+  }
   return (
     <div>
       <form
         onSubmit={(e) => {
           e.preventDefault();
+          fetchUserSignup();
         }}
       >
         <input
