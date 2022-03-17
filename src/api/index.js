@@ -66,16 +66,19 @@ export const userLogin = async (username, password) => {
     console.log(error);
   }
 };
-// fetch("https://strangers-things.herokuapp.com/api/2202-FTB-ET-WEB-FT/posts", {
-//   method: "POST",
-//   headers: {
-//     "Content-Type": "application/json",
-//     Authorization: "Bearer ${token}",
-//   },
-//   body: JSON.stringify({
-//     user: {
-//       username,
-//       password,
-//     },
-//   }),
-// });
+
+fetch(
+  "https://strangers-things.herokuapp.com/api/2202-FTB-ET-WEB-FT/posts/5e8d1bd48829fb0017d2233b",
+  {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: "Bearer ${token}",
+    },
+  }
+)
+  .then((response) => response.json())
+  .then((result) => {
+    console.log(result);
+  })
+  .catch(console.error);
