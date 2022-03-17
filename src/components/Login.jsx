@@ -10,9 +10,6 @@ const Login = () => {
     try {
       const token = await userLogin(username, password);
       localStorage.setItem("token", token);
-      {
-        /*setItem, getItem, clearItem*/
-      }
       console.log(token);
     } catch (error) {
       console.log(error);

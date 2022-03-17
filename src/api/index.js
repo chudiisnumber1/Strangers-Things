@@ -1,21 +1,43 @@
+//fetch methods, get, post, patch, delete.
+
+import Posts from "../components/Posts";
+
 export const fetchPosts = async () => {
   try {
     const response = await fetch(
       "https://strangers-things.herokuapp.com/api/2202-FTB-ET-WEB-FT/posts"
-    );
-    const result = await response.json();
-    const data = result.data.posts;
-    console.log(data);
+    )
+      .then((response) => response.json())
+      .then((Posts) => {
+        console.log(Posts, "this is from fetch");
+      });
+    const data = response.data.posts;
+    console.log(data, "data from the api");
     return data;
   } catch (error) {
     throw error;
   }
 };
 
+export const sendPosts = async () => {
+  fetch("https://strangers-things.herokuapp.com/api/COHORT-NAME/posts", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: "Bearer ${token}",
+    },
+    body: JSON.stringify({
+      user: {
+        id,
+      },
+    }),
+  });
+  const data = response.data.posts;
+  console.log(data, "data from the api");
+  return data;
+};
+
 export const userSignUP = async (username, password) => {
-  {
-    /* can't await a component, have to create a function within*/
-  }
   try {
     const newUser = await fetch(
       "https://strangers-things.herokuapp.com/api/2202-FTB-ET-WEB-FT/users/register",
@@ -40,9 +62,6 @@ export const userSignUP = async (username, password) => {
   }
 };
 export const userLogin = async (username, password) => {
-  {
-    /* can't await a component, have to create a function within*/
-  }
   try {
     const newUser = await fetch(
       "https://strangers-things.herokuapp.com/api/2202-FTB-ET-WEB-FT/users/login",
@@ -66,6 +85,7 @@ export const userLogin = async (username, password) => {
     console.log(error);
   }
 };
+
 // fetch("https://strangers-things.herokuapp.com/api/2202-FTB-ET-WEB-FT/posts", {
 //   method: "POST",
 //   headers: {
