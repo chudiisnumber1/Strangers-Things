@@ -17,7 +17,7 @@ const Posts = () => {
     <div>
       {posts.map((post) => {
         return (
-          <div key={`all Post:${post._id}`}>
+          <div className="post-container" key={`all Post:${post._id}`}>
             <h1>{post.title}</h1>
             <h2>{post.author.username}</h2>
             <h3>{post.description}</h3>
