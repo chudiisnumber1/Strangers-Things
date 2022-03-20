@@ -1,7 +1,7 @@
 import React from "react";
 import { Switch, Route } from "react-router-dom";
 import Nav from "./components/Nav";
-import Home from "./components/Home";
+
 import Posts from "./components/Posts";
 import Profile from "./components/Profile";
 import Login from "./components/Login";
@@ -15,9 +15,6 @@ function App() {
       <Switch>
         <Route path="/Login">
           <Login />
-        </Route>
-        <Route path="/Home">
-          <Home />
         </Route>
         <Route path="/Posts">
           <Posts />

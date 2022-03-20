@@ -13,9 +13,9 @@ export const fetchPosts = async () => {
   }
 };
 
-export const fetchUserPosts = async () => {
+export const fetchUserPosts = async (token) => {
   try {
-    const token = localStorage.getItem("token"); //assigns token a key from local storage
+    const token = localStorage.getItem("token"); //looking for token in localstorage
     if (token) {
       //checking if token is a valid value
       const response = await fetch(`${URL}/posts`, {
@@ -43,8 +43,8 @@ export const userSignUP = async (username, password) => {
       body: JSON.stringify({
         //converts an objects to a json string
         user: {
-          username, //username passed through the component
-          password, //password pass through the component
+          username: username, //username passed through the component
+          password: password, //password pass through the component
         },
       }),
     });
@@ -55,7 +55,7 @@ export const userSignUP = async (username, password) => {
     console.log(error);
   }
 };
-export const userLogin = async (username, password) => {
+export const userLogin = async (username, password, token) => {
   try {
     const login = await fetch(`${URL}/users/login`, {
       method: "POST",
@@ -64,8 +64,9 @@ export const userLogin = async (username, password) => {
       },
       body: JSON.stringify({
         user: {
-          username,
-          password,
+          username: username,
+          password: password,
+          token,
         },
       }),
     });
@@ -77,7 +78,13 @@ export const userLogin = async (username, password) => {
   }
 };
 
-export const createPost = async (title, description, price, willDeliver) => {
+export const createPost = async (
+  title,
+  description,
+  price,
+  delivery,
+  location
+) => {
   const token = localStorage.getItem("token");
   try {
     const newPost = await fetch(`${URL}/posts`, {
@@ -88,10 +95,11 @@ export const createPost = async (title, description, price, willDeliver) => {
       },
       body: JSON.stringify({
         post: {
-          title,
-          description,
-          price,
-          willDeliver,
+          title: title,
+          description: description,
+          price: price,
+          willDeliver: delivery,
+          location: location,
         },
       }),
     });

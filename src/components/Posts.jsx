@@ -1,17 +1,21 @@
 import React, { useEffect, useState } from "react";
-import { fetchPosts } from "../api/index.js";
+import {
+  createMessage,
+  createPost,
+  fetchPosts,
+  fetchUserPosts,
+} from "../api/index.js";
 
 const Posts = () => {
   const [posts, setPosts] = useState([]);
 
   useEffect(() => {
     const getPosts = async () => {
-      const result = await fetchPosts();
+      const result = await fetchUserPosts();
       setPosts(result);
     };
     getPosts();
-  }, []);
-  console.log(posts);
+  });
   return (
     <div>
       {posts.map((post) => {
@@ -28,4 +32,40 @@ const Posts = () => {
     </div>
   );
 };
+
+// const newPost = () => {
+//   const [newPost, setNewPost] = useState();
+
+//   useEffect(() => {
+//     const makePost = async () => {
+//       const result = await createPost();
+//       setNewPost(result);
+//     };
+//     makePost();
+//   });
+//   console.log(newPost);
+//   return(<div className="newPost">
+//     <form onsubmit={(e) => {
+//       e.preventDefault();
+//     }
+//     <input value={title} type="text" placeholder="title" onChange={(event) => {await createPost(title)}}
+//   }
+//   </form>
+//   </div>)
+// };
+
+// const newMsg = () => {
+//   const [newMsg, setNewMsg] = useState();
+
+//   useEffect(() => {
+//     const makeMsg = async () => {
+//       const result = await createMessage();
+//       setNewMsg(result);
+//     };
+//     makeMsg();
+//   });
+//   console.log(newMsg);
+//   return()
+// };
+
 export default Posts;

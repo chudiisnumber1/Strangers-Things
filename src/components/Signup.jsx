@@ -16,11 +16,13 @@ const Signup = () => {
     }
   }
   return (
-    <div>
+    <div className="logBox">
       <form
         onSubmit={(e) => {
           e.preventDefault();
           fetchUserSignup();
+          setUsername("");
+          setPassword("");
         }}
       >
         <input
@@ -31,6 +33,7 @@ const Signup = () => {
           }}
         />
         <input
+          type="password"
           value={password}
           placeholder="Password"
           onChange={(e) => {

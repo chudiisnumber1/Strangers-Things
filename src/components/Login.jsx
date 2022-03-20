@@ -1,26 +1,33 @@
 import React from "react";
+import { Route } from "react-router-dom";
 import { useState } from "react";
 import { userLogin } from "../api";
 
 const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  // const isLogin = props.isLogin;
 
   async function fetchUserLogin() {
     try {
       const token = await userLogin(username, password);
       localStorage.setItem("token", token);
+      userLogin(username, password);
+      // isLogin = true;
       console.log(token);
     } catch (error) {
       console.log(error);
     }
   }
   return (
-    <div>
+    <div className="logBox">
       <form
         onSubmit={(e) => {
           e.preventDefault();
+          console.log("Username: ", username, "password: ", password);
           fetchUserLogin();
+          setUsername("");
+          setPassword("");
         }}
       >
         <input
@@ -31,6 +38,7 @@ const Login = () => {
           }}
         />
         <input
+          type="password"
           value={password}
           placeholder="Password"
           onChange={(e) => {
@@ -39,6 +47,7 @@ const Login = () => {
         />
         <button type="submit">Login</button>
       </form>
+      <Route path="/profile.jsx" />
     </div>
   );
 };
