@@ -1,5 +1,9 @@
 import React, { useEffect, useState } from "react";
+<<<<<<< HEAD
 import { fetchPosts } from "../api/index.js";
+=======
+import { fetchUserPosts } from "../api/index.js";
+>>>>>>> 1473c7ee87bf84e7437ff4945d845a7e0d0d6229
 
 const Posts = () => {
   const [posts, setPosts] = useState([]);
