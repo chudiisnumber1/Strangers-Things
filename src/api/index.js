@@ -90,11 +90,11 @@ export const createPost = async (
       },
       body: JSON.stringify({
         post: {
-          title: title,
-          description: description,
-          price: price,
-          willDeliver: delivery,
-          location: location,
+          title: `${title}`,
+          description: `${description}`,
+          price: `${price}`,
+          willDeliver: `${delivery}`,
+          location: `${location}`,
         },
       }),
     });
@@ -123,11 +123,11 @@ export const editPost = async (
       },
       body: JSON.stringify({
         post: {
-          title,
-          description,
-          price,
-          location,
-          willDeliver,
+          title: `${title}`,
+          description: `${description}`,
+          price: `${price}`,
+          location: `${location}`,
+          willDeliver: `${willDeliver}`,
         },
       }),
     });
@@ -169,7 +169,7 @@ export const createMessage = async (content) => {
       body: JSON.stringify({
         post: {
           message: {
-            content,
+            content: `${content}`,
           },
         },
       }),
