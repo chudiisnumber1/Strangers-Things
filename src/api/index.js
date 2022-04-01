@@ -1,5 +1,27 @@
 const URL = "https://strangers-things.herokuapp.com/api/2202-FTB-ET-WEB-FT";
 
+export const userSignUP = async (username, password) => {
+  try {
+    const newUser = await fetch(`${URL}/users/register`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        user: {
+          username,
+          password,
+        },
+      }),
+    });
+    const result = await newUser.json();
+    console.log("console log for the result", result.data.token);
+    return result.data.token;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 export const fetchPosts = async () => {
   try {
     const response = await fetch(`${URL}/posts`);
@@ -12,7 +34,6 @@ export const fetchPosts = async () => {
 
 export const fetchUserPosts = async (token) => {
   try {
-    const token = localStorage.getItem("token");
     if (token) {
       const response = await fetch(`${URL}/posts`, {
         method: "GET",
@@ -29,28 +50,6 @@ export const fetchUserPosts = async (token) => {
   }
 };
 
-export const userSignUP = async (username, password) => {
-  try {
-    await fetch(`${URL}/users/register`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        user: {
-          username: `${username}`,
-          password: `${password}`,
-        },
-      }),
-    });
-    const result = await newUser.json();
-    console.log("console log for the result", result.data.token);
-    return result.data;
-  } catch (error) {
-    console.log(error);
-  }
-};
-
 export const userLogin = async (username, password, token) => {
   try {
     const login = await fetch(`${URL}/users/login`, {
@@ -60,8 +59,8 @@ export const userLogin = async (username, password, token) => {
       },
       body: JSON.stringify({
         user: {
-          username: `${username}`,
-          password: `${password}`,
+          username,
+          password,
           token,
         },
       }),
@@ -78,7 +77,7 @@ export const createPost = async (
   title,
   description,
   price,
-  delivery,
+  willDeliver,
   location
 ) => {
   const token = localStorage.getItem("token");
@@ -91,11 +90,11 @@ export const createPost = async (
       },
       body: JSON.stringify({
         post: {
-          title: `${title}`,
-          description: `${description}`,
-          price: `${price}`,
-          willDeliver: `${delivery}`,
-          location: `${location}`,
+          title,
+          description,
+          price,
+          willDeliver,
+          location,
         },
       }),
     });
@@ -124,11 +123,11 @@ export const editPost = async (
       },
       body: JSON.stringify({
         post: {
-          title: `${title}`,
-          description: `${description}`,
-          price: `${price}`,
-          location: `${location}`,
-          willDeliver: `${willDeliver}`,
+          title,
+          description,
+          price,
+          location,
+          willDeliver,
         },
       }),
     });
