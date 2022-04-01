@@ -17,6 +17,7 @@ const Profile = () => {
   });
   return (
     <div>
+      <button></button>
       {posts.map((post) => {
         return (
           <div className="post-container" key={`all Post:${post._id}`}>
