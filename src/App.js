@@ -1,7 +1,7 @@
 import React from "react";
 import { Switch, Route } from "react-router-dom";
 import Nav from "./components/Nav";
-
+import { useState, useEffect } from "react";
 import Posts from "./components/Posts";
 import Profile from "./components/Profile";
 import Login from "./components/Login";
@@ -9,7 +9,16 @@ import Signup from "./components/Signup";
 import { Redirect } from "react-router-dom";
 
 function App() {
-  const token = localStorage.getItem("token");
+  const [token, setToken] = useState(null);
+
+  useEffect(() => {
+    const localStorageToken = localStorage.getItem("token");
+    if (localStorageToken) {
+      setToken(localStorageToken);
+    }
+    console.log("INSIDE OUR USE EFFECT the toke is currently:", token);
+  }, [token]);
+
   return (
     <div>
       <Nav />
@@ -24,7 +33,7 @@ function App() {
           {!token ? <Redirect to="Login" /> : <Profile />}
         </Route>
         <Route path="/Signup">
-          <Signup />
+          <Signup setToken={setToken} />
         </Route>
       </Switch>
     </div>
