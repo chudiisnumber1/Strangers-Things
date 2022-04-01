@@ -1,31 +1,27 @@
-//fetch methods, get, post, patch, delete.
-
 const URL = "https://strangers-things.herokuapp.com/api/2202-FTB-ET-WEB-FT";
 
 export const fetchPosts = async () => {
   try {
-    const response = await fetch(`${URL}/posts`); //awaits fetch post function
-    const results = await response.json(); //logs the fetch post into a json file format, which is essentially an array of objects
-    return results.data.posts; //navigates through this new array of objects to find posts
+    const response = await fetch(`${URL}/posts`);
+    const results = await response.json();
+    return results.data.posts;
   } catch (error) {
-    //in case nothing is returned need an error to be thrown so it doesn't just keep running
     console.log(error);
   }
 };
 
 export const fetchUserPosts = async (token) => {
   try {
-    const token = localStorage.getItem("token"); //looking for token in localstorage
+    const token = localStorage.getItem("token");
     if (token) {
-      //checking if token is a valid value
       const response = await fetch(`${URL}/posts`, {
-        method: "GET", //instead of posting to API, we are know getting
+        method: "GET",
         headers: {
-          "Content-Type": "application/json", //makes sure that the data we receive is in json format
-          Authorization: `Bearer ${token} `, //requires a token to be present for this to run
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token} `,
         },
       });
-      const results = await response.json(); //await response so that we aren't returning posts before the token is validated
+      const results = await response.json();
       return results.data.posts;
     }
   } catch (error) {
@@ -41,10 +37,9 @@ export const userSignUP = async (username, password) => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        //converts an objects to a json string
         user: {
-          username: username, //username passed through the component
-          password: password, //password pass through the component
+          username: username,
+          password: password,
         },
       }),
     });
@@ -148,7 +143,6 @@ export const deletePost = async () => {
   const token = localStorage.getItem("token");
   try {
     const deleted = await fetch(`${URL}/posts/_id`, {
-      //not sure if this is right, need to find a way to target id with fetch method for patch, edit, and create
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",

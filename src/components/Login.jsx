@@ -2,11 +2,12 @@ import React from "react";
 import { Route } from "react-router-dom";
 import { useState } from "react";
 import { userLogin } from "../api";
+//import { useHistory } from "react-router-dom";
 
 const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  // const isLogin = props.isLogin;
+  //let history = useHistory();
 
   async function fetchUserLogin() {
     try {
@@ -14,6 +15,7 @@ const Login = () => {
       localStorage.setItem("token", token);
       userLogin(username, password);
       // isLogin = true;
+      //history.push("/profile");
       console.log(token);
     } catch (error) {
       console.log(error);

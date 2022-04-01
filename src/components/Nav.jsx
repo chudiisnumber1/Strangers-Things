@@ -3,25 +3,12 @@ import { Link } from "react-router-dom";
 import Login from "./Login";
 
 const Nav = () => {
-  // const logState = false;
-  // isLogin ? (logState = LogoutBtn) : (logState = LoginBtn);
-  // function LogoutBtn() {
-  //   return (
-  //     <Link className="logging" to="/Login">
-  //       Login
-  //     </Link>
-  //   );
-  // }
-  // function LoginBtn() {
-  //   return (
-  //     <Link className="logging" to="/Posts">
-  //       Logout
-  //     </Link>
-  //   );
-  // }
   return (
     <div className="navBar">
-      <div className="title">Stranger Things</div>
+      <div className="title">
+        Stranger Things
+        {localStorage.getItem("token") ? <> Logged in</> : <> Not Logged in</>}
+      </div>
       <Link className="links" to="/Posts">
         AllPosts
       </Link>
@@ -39,3 +26,5 @@ const Nav = () => {
 };
 
 export default Nav;
+
+//implement logged in and sign up, create new posts for logged in users only

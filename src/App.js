@@ -6,15 +6,16 @@ import Posts from "./components/Posts";
 import Profile from "./components/Profile";
 import Login from "./components/Login";
 import Signup from "./components/Signup";
-import { Link } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 
 function App() {
+  const token = localStorage.getItem("token");
   return (
     <div>
       <Nav />
       <Switch>
-        <Route path="/Login">
-          <Login />
+        <Route exact path="/Login">
+          {token ? <Redirect to="/Profile" /> : <Login />}
         </Route>
         <Route path="/Posts">
           <Posts />
