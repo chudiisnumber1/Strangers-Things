@@ -38,8 +38,8 @@ export const userSignUP = async (username, password) => {
       },
       body: JSON.stringify({
         user: {
-          username: `username`,
-          password: `password`,
+          username: `${username}`,
+          password: `${password}`,
         },
       }),
     });
@@ -59,8 +59,8 @@ export const userLogin = async (username, password, token) => {
       },
       body: JSON.stringify({
         user: {
-          username: `username`,
-          password: `password`,
+          username: `${username}`,
+          password: `${password}`,
           token,
         },
       }),
