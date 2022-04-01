@@ -21,7 +21,7 @@ function App() {
           <Posts />
         </Route>
         <Route path="/Profile">
-          <Profile />
+          {!token ? <Redirect to="Login" /> : <Profile />}
         </Route>
         <Route path="/Signup">
           <Signup />

@@ -31,7 +31,7 @@ export const fetchUserPosts = async (token) => {
 
 export const userSignUP = async (username, password) => {
   try {
-    const newUser = await fetch(`${URL}/users/register`, {
+    await fetch(`${URL}/users/register`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -42,14 +42,20 @@ export const userSignUP = async (username, password) => {
           password: password,
         },
       }),
-    });
-    const result = await newUser.json();
-    console.log(result.data.token);
-    return result.data.token;
+    })
+      .then((response) => response.json())
+      .then((result) => {
+        console.log(result);
+      })
+      .catch(console.error);
+    // const result = await newUser.json();
+    // console.log("this is the sign up token", result.data.token);
+    //  return result.data.token;
   } catch (error) {
     console.log(error);
   }
 };
+
 export const userLogin = async (username, password, token) => {
   try {
     const login = await fetch(`${URL}/users/login`, {

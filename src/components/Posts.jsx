@@ -1,17 +1,12 @@
 import React, { useEffect, useState } from "react";
-import {
-  createMessage,
-  createPost,
-  fetchPosts,
-  fetchUserPosts,
-} from "../api/index.js";
+import { fetchPosts } from "../api/index.js";
 
 const Posts = () => {
   const [posts, setPosts] = useState([]);
 
   useEffect(() => {
     const getPosts = async () => {
-      const result = await fetchUserPosts();
+      const result = await fetchPosts();
       setPosts(result);
     };
     getPosts();
