@@ -42,22 +42,10 @@ export const userSignUP = async (username, password) => {
           password: `${password}`,
         },
       }),
-<<<<<<< HEAD
-    })
-      .then((response) => response.json())
-      .then((result) => {
-        console.log(result);
-      })
-      .catch(console.error);
-    // const result = await newUser.json();
-    // console.log("this is the sign up token", result.data.token);
-    //  return result.data.token;
-=======
     });
     const result = await newUser.json();
     console.log("console log for the result", result.data.token);
     return result.data;
->>>>>>> 1473c7ee87bf84e7437ff4945d845a7e0d0d6229
   } catch (error) {
     console.log(error);
   }
