@@ -38,8 +38,8 @@ export const userSignUP = async (username, password) => {
       },
       body: JSON.stringify({
         user: {
-          username: `${username}`,
-          password: `${password}`,
+          username,
+          password,
         },
       }),
     });
@@ -59,8 +59,8 @@ export const userLogin = async (username, password, token) => {
       },
       body: JSON.stringify({
         user: {
-          username: `${username}`,
-          password: `${password}`,
+          username,
+          password,
           token,
         },
       }),
@@ -77,7 +77,7 @@ export const createPost = async (
   title,
   description,
   price,
-  delivery,
+  willDeliver,
   location
 ) => {
   const token = localStorage.getItem("token");
@@ -90,11 +90,11 @@ export const createPost = async (
       },
       body: JSON.stringify({
         post: {
-          title: `${title}`,
-          description: `${description}`,
-          price: `${price}`,
-          willDeliver: `${delivery}`,
-          location: `${location}`,
+          title,
+          description,
+          price,
+          willDeliver,
+          location,
         },
       }),
     });
@@ -123,11 +123,11 @@ export const editPost = async (
       },
       body: JSON.stringify({
         post: {
-          title: `${title}`,
-          description: `${description}`,
-          price: `${price}`,
-          location: `${location}`,
-          willDeliver: `${willDeliver}`,
+          title,
+          description,
+          price,
+          location,
+          willDeliver,
         },
       }),
     });
@@ -169,7 +169,7 @@ export const createMessage = async (content) => {
       body: JSON.stringify({
         post: {
           message: {
-            content: `${content}`,
+            content,
           },
         },
       }),
