@@ -38,14 +38,14 @@ export const userSignUP = async (username, password) => {
       },
       body: JSON.stringify({
         user: {
-          username: username,
-          password: password,
+          username: `username`,
+          password: `password`,
         },
       }),
     });
     const result = await newUser.json();
-    console.log(result.data.token);
-    return result.data.token;
+    console.log("console log for the result", result.data.token);
+    return result.data;
   } catch (error) {
     console.log(error);
   }
@@ -59,8 +59,8 @@ export const userLogin = async (username, password, token) => {
       },
       body: JSON.stringify({
         user: {
-          username: username,
-          password: password,
+          username: `username`,
+          password: `password`,
           token,
         },
       }),

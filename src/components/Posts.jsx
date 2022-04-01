@@ -1,10 +1,5 @@
 import React, { useEffect, useState } from "react";
-import {
-  createMessage,
-  createPost,
-  fetchPosts,
-  fetchUserPosts,
-} from "../api/index.js";
+import { fetchUserPosts } from "../api/index.js";
 
 const Posts = () => {
   const [posts, setPosts] = useState([]);
