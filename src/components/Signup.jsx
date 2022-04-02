@@ -2,7 +2,8 @@ import React from "react";
 import { useState } from "react";
 import { userSignUP } from "../api";
 
-const Signup = () => {
+const Signup = ({setToken}) => {
+  
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
@@ -10,6 +11,7 @@ const Signup = () => {
     try {
       const token = await userSignUP(username, password);
       localStorage.setItem("token", token);
+      setToken(token)
       console.log(token);
     } catch (error) {
       console.log(error);

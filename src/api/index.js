@@ -31,7 +31,7 @@ export const fetchUserPosts = async (token) => {
 
 export const userSignUP = async (username, password) => {
   try {
-    await fetch(`${URL}/users/register`, {
+    const newUser= await fetch(`${URL}/users/register`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -51,7 +51,7 @@ export const userSignUP = async (username, password) => {
   }
 };
 
-export const userLogin = async (username, password, token) => {
+export const userLogin = async (username, password,token) => {
   try {
     const login = await fetch(`${URL}/users/login`, {
       method: "POST",
