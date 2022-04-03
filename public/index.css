@@ -25,3 +25,7 @@
 .links {
   padding-left: 25px;
 }
+.createPost {
+  display: flex;
+  flex-direction: column;
+}

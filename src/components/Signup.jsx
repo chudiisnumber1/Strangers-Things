@@ -11,7 +11,6 @@ const Signup = ({ setToken }) => {
       const token = await userSignUP(username, password);
       localStorage.setItem("token", token);
       setToken(token);
-      console.log(token);
     } catch (error) {
       console.log(error);
     }
