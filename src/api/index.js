@@ -35,7 +35,7 @@ export const fetchPosts = async () => {
 export const fetchUserPosts = async (token) => {
   try {
     if (token) {
-      const response = await fetch(`${URL}/posts`, {
+      const response = await fetch(`${URL}/users/me`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -99,8 +99,8 @@ export const createPost = async (
       }),
     });
     const result = await newPost.json();
-    console.log(result.data.posts);
-    return result.data.posts;
+    console.log("here are the results to newpost", result.data.post);
+    return result.data.post;
   } catch (error) {
     console.log(error);
   }
